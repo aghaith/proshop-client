@@ -125,7 +125,7 @@ const OrderScreen = ({ match, history }) => {
                                 <Message>Order is Empty</Message> : (
                                 <ListGroup variant='flush'>
                                     {
-                                        order.orderItems.map((item, index) => (
+                                        order.orderItems?.map((item, index) => (
                                             <ListGroup.Item key={index}>
                                                 <Row>
                                                     <Col md={1}>
