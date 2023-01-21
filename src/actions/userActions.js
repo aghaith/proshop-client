@@ -38,7 +38,8 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post('/api/users/login', { email, password }, config)
+        const url = `${process.env.REACT_APP_BASE_URL}/api/users/login`
+        const { data } = await axios.post(url, { email, password }, config)
 
         dispatch({
             type: USER_LOGIN_SUCCESS,
@@ -77,7 +78,8 @@ export const register = (name, email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post('/api/users', { name, email, password }, config)
+        const url = `${process.env.REACT_APP_BASE_URL}/api/users`
+        const { data } = await axios.post(url, { name, email, password }, config)
 
         dispatch({
             type: USER_REGISTER_SUCCESS,
@@ -116,7 +118,8 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(`/api/users/${id}`, config)
+        const url = `${process.env.REACT_APP_BASE_URL}/api/users/${id}`
+        const { data } = await axios.get(url, config)
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
@@ -148,7 +151,8 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.put(`/api/users/profile`, user, config)
+        const url = `${process.env.REACT_APP_BASE_URL}/api/users/profile`
+        const { data } = await axios.put(url, user, config)
 
         dispatch({
             type: USER_UPDATE_PROFILE_SUCCESS,
@@ -189,7 +193,8 @@ export const listUsers = () => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(`/api/users`, config)
+        const url = `${process.env.REACT_APP_BASE_URL}/api/users`
+        const { data } = await axios.get(url, config)
 
         dispatch({
             type: USER_LIST_SUCCESS,
@@ -220,7 +225,8 @@ export const deleteUser = (id) => async (dispatch, getState) => {
             }
         }
 
-        await axios.delete(`/api/users/${id}`, config)
+        const url = `${process.env.REACT_APP_BASE_URL}/api/users/${id}`
+        await axios.delete(url, config)
 
         dispatch({ type: USER_DELETE_SUCCESS })
     } catch (error) {
@@ -247,7 +253,8 @@ export const updateUser = (user) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.put(`/api/users/${user._id}`, user, config)
+        const url = `${process.env.REACT_APP_BASE_URL}/api/users/${user._id}`
+        const { data } = await axios.put(url, user, config)
 
         dispatch({ type: USER_UPDATE_SUCCESS })
 
